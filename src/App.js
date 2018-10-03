@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import LandingPage from "./components/LandingPage";
 import Menu from "./components/Menu";
 import About from "./components/About";
-
+import SimpleMap from "./components/Location";
 
 // css
 import './styles/first.sass';
@@ -18,6 +18,8 @@ export default class App extends React.Component {
         <LandingPage />
         <hr></hr>
         <Menu />
+        <hr></hr>
+        <SimpleMap></SimpleMap>
         <hr></hr>
         <About></About>
       </div>

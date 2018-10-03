@@ -15,7 +15,7 @@ export default class LandingPage extends React.Component {
 
     const NavData = [
       { title: 'Menu' , href: '#menu' },
-      { title: 'Location' , href: '#' },
+      { title: 'Location' , href: '#location' },
       { title: 'About Us' , href: '#about' },
 
 
