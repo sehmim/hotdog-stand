@@ -8,7 +8,6 @@ import '../styles/mixins.sass';
 
 export default class Menu extends React.Component {
   render() {
-
     return(
       <div className="menu-container" id="menu">
 

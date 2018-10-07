@@ -10,33 +10,41 @@ import '../styles/first.sass';
 import '../styles/card.sass';
 import '../styles/hamburger.sass';
 
-export default class LandingPage extends React.Component {
-  render() {
+class LandingPage extends React.Component {
 
+  state = {
+    pop : "dick"
+  }
+
+  render() {
     const NavData = [
       { title: 'Menu' , href: '#menu' },
       { title: 'Location' , href: '#location' },
       { title: 'About Us' , href: '#about' },
-
+      { title: 'Reviews' , href: '#reviews' },
+      { title: 'Order' , href: '/order' }
 
     ]
+
+    const SideNavData = [
+      { title: 'FACEBOOK' , href: 'https://www.instagram.com/' },
+      { title: 'INSTAGRAM' , href: 'https://www.instagram.com/' }    ]
     return(
       <div className="container">
         <div className="flex-container" >
           <div className="flex-components">
-            
             <div className="flex-navbar-container">
-              <a href="#" className="flex-navbar-logo"> LOGO </a>
+              <a href="/" className="flex-navbar-logo"> LOGO </a>
                 
                 <div className="flex-navbar-items">
                   <ul className="flex-navbar-ul">
                     {
                       NavData.map((item, index) => {
                         return (
-                          <li className="flex-navbar-item-each">
+                          <li key={index} className="flex-navbar-item-each">
                             
                             <AnchorLink href={item.href}>     
-                              <a key={index} href={item.href} className="flex-navbar-ancor">
+                              <a  href={item.href} className="flex-navbar-ancor">
                                 { item.title }
                               </a>
                             </AnchorLink> 
@@ -81,24 +89,25 @@ export default class LandingPage extends React.Component {
               <div className="navigation" >
                 <input type="checkbox" className="navigation_checkbox" id="nav_toggle"></input>
                 
-                <label for="nav_toggle" className="navigation_button" >
+                <label htmlFor="nav_toggle" className="navigation_button" >
                 
                 <img className="ham" src="https://images.vexels.com/media/users/3/143047/isolated/preview/b0c9678466af11dd45a62163bdcf03fe-fast-food-hamburger-flat-icon-by-vexels.png"></img>
                 
-                </label>     
+                </label>
                 <div className="navigation_background" >{'\u00A0'}</div>
 
                 <nav className="navigation_nav">
                     <ul className="navigation_list">
-                      <li className="navigation_item">
-                        <a href="#" className="navigation_link"> Stores </a>
-                      </li>
-                      <li className="navigation_item">
-                        <a href="#" className="navigation_link"> Contact </a>
-                      </li>
-                      <li className="navigation_item">
-                        <a href="#" className="navigation_link"> Rating </a>
-                      </li>
+                      <h1 className="navigation_header"> Check Us Out On </h1>
+                      {
+                        SideNavData.map((item, index) => {
+                          return (
+                            <li className="navigation_item">
+                              <a href={ item.href } className="navigation_link"> { item.title } </a>
+                            </li>
+                            )
+                        })
+                      }
                     </ul>
                 </nav>
 
@@ -107,11 +116,12 @@ export default class LandingPage extends React.Component {
             </div>
 
           </div>
-        </div>
-
-
-        
+        </div>        
       </div>
     )
+
   }
 }
+
+export default LandingPage;
+
