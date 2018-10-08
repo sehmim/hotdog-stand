@@ -21,9 +21,7 @@ class LandingPage extends React.Component {
       { title: 'Menu' , href: '#menu' },
       { title: 'Location' , href: '#location' },
       { title: 'About Us' , href: '#about' },
-      { title: 'Reviews' , href: '#reviews' },
-      { title: 'Order' , href: '/order' }
-
+      { title: 'Reviews' , href: '#reviews' }
     ]
 
     const SideNavData = [
@@ -43,7 +41,7 @@ class LandingPage extends React.Component {
                         return (
                           <li key={index} className="flex-navbar-item-each">
                             
-                            <AnchorLink href={item.href}>     
+                            <AnchorLink href={item.href} >     
                               <a  href={item.href} className="flex-navbar-ancor">
                                 { item.title }
                               </a>
@@ -102,7 +100,7 @@ class LandingPage extends React.Component {
                       {
                         SideNavData.map((item, index) => {
                           return (
-                            <li className="navigation_item">
+                            <li key={index} className="navigation_item">
                               <a href={ item.href } className="navigation_link"> { item.title } </a>
                             </li>
                             )
@@ -116,7 +114,15 @@ class LandingPage extends React.Component {
             </div>
 
           </div>
-        </div>        
+        </div>
+
+        <div className="order-ball" >
+          <div className="order-ball-body">
+              <a className="order-ball-link" href="order" >
+                <img className="order-ball-img"  src="https://melbournechapter.net/images/spatula-clipart-transparent-background-5.png"></img>
+              </a>
+          </div>
+        </div>     
       </div>
     )
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 
-
-// import StepOne from "./order/StepOne";
-// import StepTwo from "./order/StepTwo";
-// import StepThree from "./order/StepThree";
-// import StepFour from "./order/StepFour";
+import StepOne from "./order/StepOne";
+import StepTwo from "./order/StepTwo";
+import StepThree from "./order/StepThree";
+import StepFour from "./order/StepFour";
 
 
 
@@ -12,9 +12,9 @@ import React, { Component } from 'react';
 class OrderSteps extends Component {
     state = {
         size: '',
-        drinkName: '',
-        milk: '',
-        syrup: '',
+        bun: '',
+        susage: '',
+        Condiments: '',
         StepNumber: '0',
         final : false
     }
@@ -26,19 +26,19 @@ class OrderSteps extends Component {
     
     PickDrink = (data) => {
         this.setState({
-            drinkName : data
+            bun : data
         })
     }
 
     PickMilk = (data) => {
         this.setState({
-            milk : data
+            susage : data
         })
     }
 
     PickSyrup = (data) => {
         this.setState({
-            syrup : data
+            Condiments : data
         })
     }
 
@@ -55,8 +55,8 @@ class OrderSteps extends Component {
     }
 
     StepTwoChange = () => {
-        if (this.state.drinkName === '') {
-            alert('Pick A Drink')
+        if (this.state.bun === '') {
+            alert('Pick A Bun')
         }
         else if (this.state.size != '') {
             this.setState({
@@ -112,17 +112,44 @@ class OrderSteps extends Component {
             null
           :
           <div className="jumbotron">
-        <h2 className="display-5 text-center"> Order Some Coffee </h2>
+        <h2 className="display-5 text-center"> Let's Order Some HotDogs </h2>
           <h3> Order </h3>
-              <div> Size: { this.state.size } </div>
-              <div> Drink: { this.state.drinkName } </div>
-              <div> Milk: { this.state.milk } </div>
-              <div> syrup: { this.state.syrup } </div>
+              <div> Size : { this.state.size } </div>
+              <div> Bun Type : { this.state.bun } </div>
+              <div> Susage : { this.state.susage } </div>
+              <div> Condiments : { this.state.Condiments } </div>
           </div>
       }
 
         <div>
-            Order Page
+            {
+
+            this.state.StepNumber === '0' ? 
+            <StepOne PickSize={this.handleSize} StepOneChange = {this.StepOneChange} />
+            :
+            this.state.StepNumber === '1' ? 
+            <StepTwo PickDrink = { this.PickDrink } StepTwoChange = {this.StepTwoChange } BackStepToOne = {this.BackStepToOne} ></StepTwo>
+            :
+            this.state.StepNumber === '2' ? 
+            <StepThree PickDrink = { this.PickMilk } StepThreeChange = {this.StepThreeChange  } BackStepToTwo = {this.BackStepToTwo}></StepThree>
+            :
+            this.state.StepNumber === '3' ? 
+            <StepFour PickDrink = { this.PickSyrup } StepFourChange = {this.StepFourChange } BackStepToThree = {this.BackStepToThree}></StepFour>
+            :
+            <div>
+
+                <h1> Order Overview</h1>
+                <h5> Your Getting A </h5>
+                <p>       { this.state.size }
+                     Sized HotDog. <br />
+                    { this.state.bun } Bun
+                    With  { this.state.susage } 
+                     Susage ( { this.state.Condiments } )
+                </p>
+
+                <button onClick={ this.BackStepToFour } > Change Something </button>
+            </div>
+            }
         </div>    
       </div>
     );
